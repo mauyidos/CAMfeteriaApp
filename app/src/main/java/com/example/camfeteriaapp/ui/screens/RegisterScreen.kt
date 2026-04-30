@@ -10,6 +10,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.*
 import androidx.navigation.NavController
@@ -67,36 +68,77 @@ fun RegisterScreen(navController: NavController) {
             verticalArrangement = Arrangement.Center
         ) {
 
-            Text("Crear cuenta", fontSize = 24.sp)
+            Text(
+                "Crear cuenta",
+                style = MaterialTheme.typography.titleLarge
+                )
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            OutlinedTextField(name, { name = it }, placeholder = { Text("Nombre completo") }, modifier = Modifier.fillMaxWidth())
+            OutlinedTextField(
+                name,
+                { name = it },
+                placeholder = {
+                    Text(
+                        "Nombre completo",
+                        style = MaterialTheme.typography.displayMedium
+                    )
+                },
+                modifier = Modifier.fillMaxWidth(),
+                textStyle = MaterialTheme.typography.displayMedium
+            )
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            OutlinedTextField(email, { email = it }, placeholder = { Text("Correo electrónico") }, modifier = Modifier.fillMaxWidth())
+            OutlinedTextField(
+                email,
+                { email = it },
+                placeholder = {
+                    Text(
+                        "Correo electrónico",
+                        style = MaterialTheme.typography.displayMedium
+                    )
+                },
+                modifier = Modifier.fillMaxWidth(),
+                textStyle = MaterialTheme.typography.displayMedium
+            )
 
             Spacer(modifier = Modifier.height(12.dp))
 
             OutlinedTextField(
                 password,
                 { password = it },
-                placeholder = { Text("Contraseña") },
+                placeholder = {
+                    Text(
+                        "Contraseña",
+                        style = MaterialTheme.typography.displayMedium
+                    )
+                },
                 visualTransformation = PasswordVisualTransformation(),
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                textStyle = MaterialTheme.typography.displayMedium
             )
 
-            Text("Nivel de seguridad: $strength", color = strengthColor)
+            Text(
+                text = "Nivel de seguridad: $strength",
+                color = strengthColor,
+                style = MaterialTheme.typography.bodyMedium
+            )
 
             Spacer(modifier = Modifier.height(12.dp))
 
             OutlinedTextField(
                 confirmPassword,
                 { confirmPassword = it },
-                placeholder = { Text("Confirmar contraseña") },
+                placeholder = {
+                    Text(
+                        "Confirmar contraseña",
+                        style = MaterialTheme.typography.displayMedium
+                    )
+                },
                 visualTransformation = PasswordVisualTransformation(),
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                textStyle = MaterialTheme.typography.displayMedium
             )
 
             Spacer(modifier = Modifier.height(20.dp))
@@ -114,7 +156,11 @@ fun RegisterScreen(navController: NavController) {
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(16.dp)
             ) {
-                Text("REGISTRARSE")
+                Text(
+                    "REGISTRARSE",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
             }
         }
     }

@@ -155,15 +155,15 @@ fun SplashScreen(onFinish: () -> Unit) {
                 Text(
                     text = "CAMensales",
                     fontSize = 18.sp,
-                    color = Color(0xFFF5F3EF)
+                    color = Color(0xFFF5F3EF),
+                    style = MaterialTheme.typography.titleLarge
                 )
 
                 Spacer(modifier = Modifier.height(6.dp))
 
                 Text(
                     text = "\"Calidad con calidez\"",
-                    fontSize = 15.sp,
-                    fontStyle = FontStyle.Italic,
+                    style = MaterialTheme.typography.bodyMedium,
                     color = Color(0xFFE7E3DC)
                 )
 
@@ -171,7 +171,7 @@ fun SplashScreen(onFinish: () -> Unit) {
 
                 Text(
                     text = "Nos esforzamos por atenderlo\ncomo se merece",
-                    fontSize = 13.sp,
+                    style = MaterialTheme.typography.bodySmall,
                     color = Color(0xFFE7E3DC),
                     textAlign = TextAlign.Center
                 )

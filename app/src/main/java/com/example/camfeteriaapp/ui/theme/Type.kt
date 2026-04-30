@@ -6,47 +6,51 @@ import androidx.compose.ui.text.font.*
 import androidx.compose.ui.unit.sp
 import com.example.camfeteriaapp.R
 
-val Poppins = FontFamily(
-    Font(R.font.poppins_regular, FontWeight.Normal),
-    Font(R.font.poppins_medium, FontWeight.Medium),
-    Font(R.font.poppins_semibold, FontWeight.SemiBold),
-    Font(R.font.poppins_bold, FontWeight.Bold)
+val April = FontFamily(
+    Font(R.font.april_regular, FontWeight.Normal),
+    Font(R.font.april_thin, FontWeight.Thin),
+    Font(R.font.april_light, FontWeight.Light),
+    Font(R.font.april_extralight, FontWeight.ExtraLight)
+)
+
+val Cardo = FontFamily(
+    Font(R.font.cardo_regular, FontWeight.Normal),
+    Font(R.font.cardo_bold, FontWeight.Bold)
 )
 
 val Typography = Typography(
-
-    // H1 → 30sp Bold
-    headlineLarge = TextStyle(
-        fontFamily = Poppins,
-        fontWeight = FontWeight.Bold,
-        fontSize = 30.sp
+    titleLarge = TextStyle(
+        fontFamily = April,
+        fontSize = 22.sp
     ),
 
-    // H2 → 24sp SemiBold
-    headlineMedium = TextStyle(
-        fontFamily = Poppins,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 24.sp
-    ),
-
-    // H3 → 20sp Medium
-    headlineSmall = TextStyle(
-        fontFamily = Poppins,
-        fontWeight = FontWeight.Medium,
-        fontSize = 20.sp
-    ),
-
-    // Body → 16sp Regular
-    bodyLarge = TextStyle(
-        fontFamily = Poppins,
-        fontWeight = FontWeight.Normal,
+    bodyMedium = TextStyle(
+        fontFamily = April,
         fontSize = 16.sp
     ),
 
-    // Caption → 12sp
     bodySmall = TextStyle(
-        fontFamily = Poppins,
-        fontWeight = FontWeight.Normal,
-        fontSize = 12.sp
-    )
+        fontFamily = April,
+        fontSize = 13.sp
+    ),
+
+    labelLarge = TextStyle(
+        fontFamily = April,
+        fontSize = 14.sp
+    ),
+
+    displayLarge = TextStyle(
+        fontFamily = Cardo,
+        fontSize = 22.sp
+    ),
+
+    displayMedium = TextStyle(
+        fontFamily = Cardo,
+        fontSize = 16.sp
+    ),
+
+    displaySmall = TextStyle(
+        fontFamily = Cardo,
+        fontSize = 13.sp
+    ),
 )

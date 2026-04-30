@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.fontResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -112,10 +113,16 @@ fun AuthScreen(navController: NavController) {
             OutlinedTextField(
                 value = email,
                 onValueChange = { email = it },
-                placeholder = { Text("Correo electrónico") },
+                placeholder = {
+                    Text(
+                        "Correo electrónico",
+                        style = MaterialTheme.typography.displayMedium
+                    )
+                },
                 singleLine = true,
                 shape = RoundedCornerShape(16.dp),
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                textStyle = MaterialTheme.typography.displayMedium
             )
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -124,7 +131,12 @@ fun AuthScreen(navController: NavController) {
             OutlinedTextField(
                 value = password,
                 onValueChange = { password = it },
-                placeholder = { Text("Contraseña") },
+                placeholder = {
+                    Text(
+                        "Contraseña",
+                        style = MaterialTheme.typography.displayMedium
+                    )
+                },
                 singleLine = true,
                 shape = RoundedCornerShape(16.dp),
                 visualTransformation = if (passwordVisible)
@@ -135,10 +147,13 @@ fun AuthScreen(navController: NavController) {
                     TextButton(onClick = {
                         passwordVisible = !passwordVisible
                     }) {
-                        Text(if (passwordVisible) "Ocultar" else "Ver")
+                        Text(
+                            if (passwordVisible) "Ocultar" else "Ver"
+                        )
                     }
                 },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                textStyle = MaterialTheme.typography.displayMedium
             )
 
             Spacer(modifier = Modifier.height(24.dp))
