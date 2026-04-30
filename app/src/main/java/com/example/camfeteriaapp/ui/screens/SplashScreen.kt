@@ -1,4 +1,4 @@
-package com.example.camfeteriaapp
+package com.example.camfeteriaapp.ui.screens
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.camfeteriaapp.R
 import kotlinx.coroutines.delay
 import kotlin.math.sin
 

@@ -1,4 +1,4 @@
-package com.example.camfeteriaapp
+package com.example.camfeteriaapp.ui.screens
 
 import android.widget.Toast
 import androidx.compose.animation.core.*
@@ -13,6 +13,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.*
 import androidx.navigation.NavController
+import com.example.camfeteriaapp.UserPreferences
 
 @Composable
 fun RegisterScreen(navController: NavController) {

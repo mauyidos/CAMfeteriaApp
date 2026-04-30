@@ -1,4 +1,4 @@
-package com.example.camfeteriaapp
+package com.example.camfeteriaapp.ui.screens
 
 import android.widget.Toast
 import androidx.compose.animation.*
@@ -25,6 +25,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.camfeteriaapp.App
+import com.example.camfeteriaapp.R
+import com.example.camfeteriaapp.UserPreferences
 
 @Composable
 fun AuthScreen(navController: NavController) {
@@ -149,6 +152,7 @@ fun AuthScreen(navController: NavController) {
 
                     if (email == savedEmail && password == savedPassword) {
                         Toast.makeText(context, "Login correcto", Toast.LENGTH_SHORT).show()
+                        navController.navigate("app")
                     } else {
                         Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
                     }
