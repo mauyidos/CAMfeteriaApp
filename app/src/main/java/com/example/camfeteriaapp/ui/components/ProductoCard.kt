@@ -23,6 +23,7 @@ import com.example.camfeteriaapp.model.Producto
 fun ProductoCard(
     producto: Producto,
     onAgregar: () -> Unit
+
 ) {
     Card(
         modifier = Modifier

@@ -4,6 +4,14 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.camfeteriaapp.ui.carrito.CarritoScreen
+import com.example.camfeteriaapp.ui.menu.MenuScreen
+import com.example.camfeteriaapp.ui.productos.BebidasCalientesScreen
+import com.example.camfeteriaapp.ui.productos.BebidasFriasScreen
+import com.example.camfeteriaapp.ui.productos.ComidasScreen
+import com.example.camfeteriaapp.ui.productos.DesayunosScreen
+import com.example.camfeteriaapp.ui.productos.EntradasScreen
+import com.example.camfeteriaapp.ui.productos.PostresScreen
 import com.example.camfeteriaapp.ui.screens.App
 import com.example.camfeteriaapp.ui.screens.AuthScreen
 import com.example.camfeteriaapp.ui.screens.RegisterScreen
@@ -15,32 +23,130 @@ fun ScreenControl() {
 
     NavHost(
         navController = navController,
-        startDestination = "splash"
+        startDestination = Screen.Splash.route
     ) {
-        //Splash screen
-        composable("splash") {
+
+        composable(Screen.Splash.route) {
             SplashScreen(
                 onFinish = {
-                    navController.navigate("auth") {
-                        popUpTo("splash") { inclusive = true }
+                    navController.navigate(Screen.Auth.route) {
+                        popUpTo(Screen.Splash.route) { inclusive = true }
                     }
                 }
             )
         }
 
-        //Authentication screen
-        composable("auth") {
+        composable(Screen.Auth.route) {
             AuthScreen(navController)
         }
 
-        //Register screen
-        composable("register") {
+        composable(Screen.Register.route) {
             RegisterScreen(navController)
         }
 
-        //App screen
-        composable("app") {
-            App(navController)
+        composable("desayunos") {
+            DesayunosScreen(
+                onMenuClick = {
+                    navController.navigate(Screen.Menu.route)
+                },
+                onCartClick = {
+                    navController.navigate(Screen.Carrito.route)
+                },
+                onAccountClick = {
+                    navController.navigate(Screen.Auth.route)
+                }
+            )
         }
+
+        composable(Screen.Menu.route) {
+            MenuScreen(
+                onMenuClick = { },
+                onCartClick = { navController.navigate(Screen.Carrito.route) },
+                onAccountClick = { navController.navigate(Screen.Auth.route) },
+                onCategoryClick = { categoria ->
+
+                    if (categoria == "Desayunos") {
+                        navController.navigate("desayunos")
+                    }
+
+                    if (categoria == "Entradas") {
+                        navController.navigate("entradas")
+                    }
+
+                    if (categoria == "Comidas") {
+                        navController.navigate("comidas")
+                    }
+
+                    if (categoria == "Postres") {
+                        navController.navigate("postres")
+                    }
+
+                    if (categoria == "Bebidas calientes") {
+                        navController.navigate("bebidasCalientes")
+                    }
+
+                    if (categoria == "Bebidas frías") {
+                        navController.navigate("bebidasFrias")
+                    }
+
+                    if (categoria == "Carrito") {
+                        navController.navigate(Screen.Carrito.route)
+                    }
+
+                    if (categoria == "Cuenta") {
+                        navController.navigate("auth")
+                    }
+
+                }
+            )
+        }
+
+        composable("entradas") {
+            EntradasScreen(
+                onMenuClick = { navController.navigate(Screen.Menu.route) },
+                onCartClick = { navController.navigate(Screen.Carrito.route) },
+                onAccountClick = { navController.navigate(Screen.Auth.route) }
+            )
+        }
+
+        composable("comidas") {
+            ComidasScreen(
+                onMenuClick = { navController.navigate(Screen.Menu.route) },
+                onCartClick = { navController.navigate(Screen.Carrito.route) },
+                onAccountClick = { navController.navigate(Screen.Auth.route) }
+            )
+        }
+
+        composable("postres") {
+            PostresScreen(
+                onMenuClick = { navController.navigate(Screen.Menu.route) },
+                onCartClick = { navController.navigate(Screen.Carrito.route) },
+                onAccountClick = { navController.navigate(Screen.Auth.route) }
+            )
+        }
+
+        composable("bebidasCalientes") {
+            BebidasCalientesScreen(
+                onMenuClick = { navController.navigate(Screen.Menu.route) },
+                onCartClick = { navController.navigate(Screen.Carrito.route) },
+                onAccountClick = { navController.navigate(Screen.Auth.route) }
+            )
+        }
+
+        composable("bebidasFrias") {
+            BebidasFriasScreen(
+                onMenuClick = { navController.navigate(Screen.Menu.route) },
+                onCartClick = { navController.navigate(Screen.Carrito.route) },
+                onAccountClick = { navController.navigate(Screen.Auth.route) }
+            )
+        }
+        
+        composable(Screen.Carrito.route) {
+            CarritoScreen(
+                onMenuClick = { navController.navigate(Screen.Menu.route) },
+                onAccountClick = { navController.navigate(Screen.Auth.route) }
+            )
+        }
+
     }
 }

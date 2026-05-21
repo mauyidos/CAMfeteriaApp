@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.camfeteriaapp.R
+import com.example.camfeteriaapp.Screen
 import com.example.camfeteriaapp.UserPreferences
 
 @Composable
@@ -166,7 +167,7 @@ fun AuthScreen(navController: NavController) {
 
                     if (email == savedEmail && password == savedPassword) {
                         Toast.makeText(context, "Login correcto", Toast.LENGTH_SHORT).show()
-                        navController.navigate("app")
+                        navController.navigate(Screen.Menu.route)
                     } else {
                         Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
                     }

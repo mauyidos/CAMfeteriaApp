@@ -24,12 +24,16 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.camfeteriaapp.ui.components.ProductoCard
 import com.example.camfeteriaapp.viewmodel.CafeteriaViewModel
+import com.example.camfeteriaapp.CartManager
+import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun App(navController: NavController) {
 
     val viewModel = remember { CafeteriaViewModel() }
     var pantalla by remember { mutableStateOf("productos") }
+    val context = LocalContext.current
+
     if (pantalla == "productos") {
 
         Column(
@@ -57,6 +61,8 @@ fun App(navController: NavController) {
 fun ProductosScreen(viewModel: CafeteriaViewModel) {
 
     val productos = viewModel.productos
+    val context = LocalContext.current
+
 
     LazyColumn {
         items(productos) {
@@ -64,7 +70,7 @@ fun ProductosScreen(viewModel: CafeteriaViewModel) {
             ProductoCard(
                 producto = producto,
                 onAgregar = {
-                    viewModel.agregarProducto(producto)
+                    CartManager.agregarProducto(producto.nombre, producto.precio, context)
                 }
             )
         }
@@ -74,8 +80,9 @@ fun ProductosScreen(viewModel: CafeteriaViewModel) {
 @Composable
 fun CarritoScreen(viewModel: CafeteriaViewModel) {
 
-    val carrito = viewModel.carrito
-    val total = viewModel.calcularTotal()
+    val carrito = CartManager.items
+    val total = CartManager.getTotal()
+    val context = LocalContext.current
 
     Column(
         modifier = Modifier.padding(16.dp)
@@ -97,18 +104,18 @@ fun CarritoScreen(viewModel: CafeteriaViewModel) {
                 Column(
                     horizontalAlignment = Alignment.Start
                 ) {
-                    Text(item.producto.nombre)
+                    Text(item.nombre)
                     Text("Cantidad: ${item.cantidad}")
                 }
 
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text("$${item.producto.precio * item.cantidad}")
+                    Text("$${item.precio * item.cantidad}")
 
                     Button(
                         onClick = {
-                            viewModel.eliminarProducto(item.producto)
+                            CartManager.actualizarCantidad(item, item.cantidad - 1, context)
                         }
                     ) {
                         Text("Quitar")
