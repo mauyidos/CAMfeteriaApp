@@ -1,17 +1,26 @@
-package com.example.camfeteriaapp.ui.menu
+package com.example.camfeteriaapp.ui.screens.menu
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.RestaurantMenu
-import androidx.compose.material3.*
+import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,7 +42,7 @@ fun MenuScreen(
     onCategoryClick: (String) -> Unit = {}
 ) {
 
-    val background = Brush.verticalGradient(
+    val background = Brush.Companion.verticalGradient(
         colors = listOf(
             Color(0xFF1A2A44),
             Color(0xFF2F5D8C)
@@ -69,7 +78,7 @@ fun MenuScreen(
     ) { padding ->
 
         Column(
-            modifier = Modifier
+            modifier = Modifier.Companion
                 .fillMaxSize()
                 .background(background)
                 .padding(padding)
@@ -79,9 +88,9 @@ fun MenuScreen(
             Text(
                 text = "Menú",
                 fontSize = 26.sp,
-                color = Color.White,
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.padding(bottom = 16.dp)
+                color = Color.Companion.White,
+                fontWeight = FontWeight.Companion.SemiBold,
+                modifier = Modifier.Companion.padding(bottom = 16.dp)
             )
 
             LazyVerticalGrid(
@@ -111,7 +120,7 @@ fun CategoryCard(
     onClick: () -> Unit
 ) {
     Box(
-        modifier = Modifier
+        modifier = Modifier.Companion
             .height(140.dp)
             .clip(RoundedCornerShape(20.dp))
             .clickable { onClick() }
@@ -120,23 +129,23 @@ fun CategoryCard(
         Image(
             painter = painterResource(id = image),
             contentDescription = title,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
+            contentScale = ContentScale.Companion.Crop,
+            modifier = Modifier.Companion.fillMaxSize()
         )
 
         Box(
-            modifier = Modifier
+            modifier = Modifier.Companion
                 .fillMaxSize()
-                .background(Color.Black.copy(alpha = 0.35f))
+                .background(Color.Companion.Black.copy(alpha = 0.35f))
         )
 
         Text(
             text = title,
-            color = Color.White,
+            color = Color.Companion.White,
             fontSize = 16.sp,
-            fontWeight = FontWeight.SemiBold,
-            modifier = Modifier
-                .align(Alignment.Center)
+            fontWeight = FontWeight.Companion.SemiBold,
+            modifier = Modifier.Companion
+                .align(Alignment.Companion.Center)
         )
     }
 }

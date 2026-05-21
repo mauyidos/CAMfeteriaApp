@@ -1,4 +1,4 @@
-package com.example.camfeteriaapp.ui.productos
+package com.example.camfeteriaapp.ui.screens.menu.productos
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -12,9 +12,11 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.camfeteriaapp.R
+import com.example.camfeteriaapp.model.Producto
+import com.example.camfeteriaapp.ui.components.ProductoCard
 
 @Composable
-fun BebidasCalientesScreen(
+fun BebidasFriasScreen(
     onMenuClick: () -> Unit,
     onCartClick: () -> Unit,
     onAccountClick: () -> Unit
@@ -28,11 +30,12 @@ fun BebidasCalientesScreen(
     )
 
     val productos = listOf(
-        Producto("Café americano", R.drawable.pcafeamericano, 20.0),
-        Producto("Capuccino", R.drawable.pcapuccino, 30.0),
-        Producto("Café espresso", R.drawable.cafeespresso, 25.0),
-        Producto("Té de manzanilla", R.drawable.temanzanilla, 18.0),
-        Producto("Chocolate caliente", R.drawable.chocolatecaliente, 28.0)
+        Producto("Esquimos", R.drawable.esquimos, 30.0),
+        Producto("Malteadas", R.drawable.malteadas, 35.0),
+        Producto("Frappés", R.drawable.frappes, 40.0),
+        Producto("Aguas de frutas", R.drawable.aguasfrutas, 20.0),
+        Producto("Refrescos", R.drawable.refrescos, 18.0),
+        Producto("Jugos", R.drawable.jugos, 25.0)
     )
 
     Scaffold(

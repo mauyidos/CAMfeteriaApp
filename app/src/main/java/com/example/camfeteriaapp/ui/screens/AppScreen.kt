@@ -27,6 +27,7 @@ import com.example.camfeteriaapp.viewmodel.CafeteriaViewModel
 import com.example.camfeteriaapp.CartManager
 import androidx.compose.ui.platform.LocalContext
 
+/*
 @Composable
 fun App(navController: NavController) {
 
@@ -134,3 +135,4 @@ fun CarritoScreen(viewModel: CafeteriaViewModel) {
         )
     }
 }
+*/

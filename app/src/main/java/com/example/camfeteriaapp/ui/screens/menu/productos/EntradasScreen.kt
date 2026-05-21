@@ -1,4 +1,4 @@
-package com.example.camfeteriaapp.ui.productos
+package com.example.camfeteriaapp.ui.screens.menu.productos
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -6,15 +6,17 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.camfeteriaapp.R
+import com.example.camfeteriaapp.model.Producto
+import com.example.camfeteriaapp.ui.components.ProductoCard
 
 @Composable
-fun BebidasFriasScreen(
+fun EntradasScreen(
     onMenuClick: () -> Unit,
     onCartClick: () -> Unit,
     onAccountClick: () -> Unit
@@ -28,12 +30,10 @@ fun BebidasFriasScreen(
     )
 
     val productos = listOf(
-        Producto("Esquimos", R.drawable.esquimos, 30.0),
-        Producto("Malteadas", R.drawable.malteadas, 35.0),
-        Producto("Frappés", R.drawable.frappes, 40.0),
-        Producto("Aguas de frutas", R.drawable.aguasfrutas, 20.0),
-        Producto("Refrescos", R.drawable.refrescos, 18.0),
-        Producto("Jugos", R.drawable.jugos, 25.0)
+        Producto("Nachos", R.drawable.nachos, 40.0),
+        Producto("Guacamole con chicharrón", R.drawable.guacamolechicharron, 50.0),
+        Producto("Ensaladas", R.drawable.ensaladas, 35.0),
+        Producto("Papas a la francesa", R.drawable.papasfrancesa, 30.0)
     )
 
     Scaffold(

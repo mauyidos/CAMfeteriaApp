@@ -3,7 +3,7 @@ package com.example.camfeteriaapp.data
 import com.example.camfeteriaapp.model.Producto
 import com.example.camfeteriaapp.R
 
-
+/*
 object ProductosData {
     val listaProductos = listOf(
         Producto(1, "Café Americano", 25.0, R.drawable.pcafeamericano),
@@ -11,3 +11,4 @@ object ProductosData {
         Producto(3, "Pan dulce", 20.0, R.drawable.pconcha)
     )
 }
+*/

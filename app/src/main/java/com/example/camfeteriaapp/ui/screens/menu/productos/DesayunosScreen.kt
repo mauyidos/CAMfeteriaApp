@@ -1,4 +1,4 @@
-package com.example.camfeteriaapp.ui.productos
+package com.example.camfeteriaapp.ui.screens.menu.productos
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -12,7 +12,6 @@ import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -22,12 +21,8 @@ import androidx.compose.ui.unit.sp
 import com.example.camfeteriaapp.R
 import com.example.camfeteriaapp.CartManager
 import androidx.compose.ui.platform.LocalContext
-
-data class Producto(
-    val nombre: String,
-    val imagen: Int,
-    val precio: Double
-)
+import com.example.camfeteriaapp.model.Producto
+import com.example.camfeteriaapp.ui.components.ProductoCard
 
 @Composable
 fun DesayunosScreen(
@@ -94,67 +89,6 @@ fun DesayunosScreen(
 
                 items(productos.size) { index ->
                     ProductoCard(productos[index])
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun ProductoCard(producto: Producto) {
-
-    val context = LocalContext.current
-    var cantidad by remember { mutableStateOf(0) }
-
-    Card(
-        shape = RoundedCornerShape(20.dp),
-        modifier = Modifier.fillMaxWidth()
-    ) {
-
-        Column {
-
-            Image(
-                painter = painterResource(id = producto.imagen),
-                contentDescription = producto.nombre,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(180.dp)
-            )
-
-            Column(
-                modifier = Modifier.padding(16.dp)
-            ) {
-
-                Text(producto.nombre, fontSize = 18.sp)
-
-                Text("$${
-                    producto.precio
-                }", color = Color(0xFFD9A066))
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-
-                    Button(onClick = {
-                        if (cantidad > 0) cantidad--
-                    }) {
-                        Text("-")
-                    }
-
-                    Text(
-                        "$cantidad",
-                        modifier = Modifier.padding(16.dp)
-                    )
-
-                    Button(onClick = {
-                        cantidad++
-                        CartManager.agregarProducto(producto.nombre, producto.precio, context)
-                    }) {
-                        Text("+")
-                    }
                 }
             }
         }
