@@ -1,4 +1,4 @@
-package com.example.camfeteriaapp
+package com.example.camfeteriaapp.navigation
 
 sealed class Screen(val route: String) {
     object Splash : Screen("splash")

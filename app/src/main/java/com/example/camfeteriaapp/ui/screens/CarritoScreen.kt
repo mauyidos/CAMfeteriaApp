@@ -33,20 +33,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.camfeteriaapp.CartManager
+import com.example.camfeteriaapp.viewmodel.CAMfeteriaViewModel
 
 @Composable
 fun CarritoScreen(
     onMenuClick: () -> Unit,
-    onAccountClick: () -> Unit
+    onAccountClick: () -> Unit,
+    camfeteriaVM: CAMfeteriaViewModel
 ) {
     val context = LocalContext.current
-    val carrito = CartManager.items
+    val carrito = camfeteriaVM.items
     var total by remember{mutableStateOf(0.0)}
 
     LaunchedEffect(Unit) {
-        CartManager.cargarCarrito(context)
-        total = CartManager.getTotal()
+        camfeteriaVM.cargarCarrito(context)
+        total = camfeteriaVM.getTotal()
     }
 
     Scaffold(
@@ -119,7 +120,7 @@ fun CarritoScreen(
                             ) {
 
                                 Button(onClick = {
-                                    CartManager.actualizarCantidad(item, item.cantidad - 1, context)
+                                    camfeteriaVM.actualizarCantidad(item, item.cantidad - 1, context)
                                 }) {
                                     Text("-")
                                 }
@@ -130,7 +131,7 @@ fun CarritoScreen(
                                 )
 
                                 Button(onClick = {
-                                    CartManager.actualizarCantidad(item, item.cantidad + 1, context)
+                                    camfeteriaVM.actualizarCantidad(item, item.cantidad + 1, context)
                                 }) {
                                     Text("+")
                                 }
@@ -145,7 +146,7 @@ fun CarritoScreen(
             }
 
             Button(onClick = {
-                CartManager.limpiarCarrito(context)
+                camfeteriaVM.limpiarCarrito(context)
             }) {
                 Text("Vaciar carrito")
             }

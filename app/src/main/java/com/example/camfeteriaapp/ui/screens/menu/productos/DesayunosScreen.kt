@@ -19,16 +19,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.camfeteriaapp.R
-import com.example.camfeteriaapp.CartManager
 import androidx.compose.ui.platform.LocalContext
 import com.example.camfeteriaapp.model.Producto
 import com.example.camfeteriaapp.ui.components.ProductoCard
+import com.example.camfeteriaapp.viewmodel.CAMfeteriaViewModel
 
 @Composable
 fun DesayunosScreen(
     onMenuClick: () -> Unit,
     onCartClick: () -> Unit,
-    onAccountClick: () -> Unit
+    onAccountClick: () -> Unit,
+    camfeteriaVM: CAMfeteriaViewModel
 ) {
 
     val background = Brush.verticalGradient(
@@ -88,7 +89,7 @@ fun DesayunosScreen(
             ) {
 
                 items(productos.size) { index ->
-                    ProductoCard(productos[index])
+                    ProductoCard(productos[index], camfeteriaVM)
                 }
             }
         }

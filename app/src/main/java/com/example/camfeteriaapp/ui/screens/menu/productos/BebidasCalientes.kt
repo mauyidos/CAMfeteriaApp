@@ -14,12 +14,14 @@ import androidx.compose.ui.unit.dp
 import com.example.camfeteriaapp.R
 import com.example.camfeteriaapp.model.Producto
 import com.example.camfeteriaapp.ui.components.ProductoCard
+import com.example.camfeteriaapp.viewmodel.CAMfeteriaViewModel
 
 @Composable
 fun BebidasCalientesScreen(
     onMenuClick: () -> Unit,
     onCartClick: () -> Unit,
-    onAccountClick: () -> Unit
+    onAccountClick: () -> Unit,
+    camfeteriaVM: CAMfeteriaViewModel
 ) {
 
     val background = Brush.verticalGradient(
@@ -78,7 +80,7 @@ fun BebidasCalientesScreen(
             ) {
 
                 items(productos.size) { index ->
-                    ProductoCard(productos[index])
+                    ProductoCard(productos[index], camfeteriaVM)
                 }
             }
         }

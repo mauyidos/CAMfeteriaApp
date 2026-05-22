@@ -1,6 +1,7 @@
-package com.example.camfeteriaapp
+package com.example.camfeteriaapp.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavOptions
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -15,9 +16,10 @@ import com.example.camfeteriaapp.ui.screens.menu.productos.PostresScreen
 import com.example.camfeteriaapp.ui.screens.AuthScreen
 import com.example.camfeteriaapp.ui.screens.RegisterScreen
 import com.example.camfeteriaapp.ui.screens.SplashScreen
+import com.example.camfeteriaapp.viewmodel.CAMfeteriaViewModel
 
 @Composable
-fun ScreenControl() {
+fun ScreenControl(camfeteriaVM: CAMfeteriaViewModel) {
     val navController = rememberNavController()
 
     NavHost(
@@ -53,7 +55,8 @@ fun ScreenControl() {
                 },
                 onAccountClick = {
                     navController.navigate(Screen.Auth.route)
-                }
+                },
+                camfeteriaVM
             )
         }
 
@@ -104,7 +107,8 @@ fun ScreenControl() {
             EntradasScreen(
                 onMenuClick = { navController.navigate(Screen.Menu.route) },
                 onCartClick = { navController.navigate(Screen.Carrito.route) },
-                onAccountClick = { navController.navigate(Screen.Auth.route) }
+                onAccountClick = { navController.navigate(Screen.Auth.route) },
+                camfeteriaVM
             )
         }
 
@@ -112,7 +116,8 @@ fun ScreenControl() {
             ComidasScreen(
                 onMenuClick = { navController.navigate(Screen.Menu.route) },
                 onCartClick = { navController.navigate(Screen.Carrito.route) },
-                onAccountClick = { navController.navigate(Screen.Auth.route) }
+                onAccountClick = { navController.navigate(Screen.Auth.route) },
+                camfeteriaVM
             )
         }
 
@@ -120,7 +125,8 @@ fun ScreenControl() {
             PostresScreen(
                 onMenuClick = { navController.navigate(Screen.Menu.route) },
                 onCartClick = { navController.navigate(Screen.Carrito.route) },
-                onAccountClick = { navController.navigate(Screen.Auth.route) }
+                onAccountClick = { navController.navigate(Screen.Auth.route) },
+                camfeteriaVM
             )
         }
 
@@ -128,7 +134,8 @@ fun ScreenControl() {
             BebidasCalientesScreen(
                 onMenuClick = { navController.navigate(Screen.Menu.route) },
                 onCartClick = { navController.navigate(Screen.Carrito.route) },
-                onAccountClick = { navController.navigate(Screen.Auth.route) }
+                onAccountClick = { navController.navigate(Screen.Auth.route) },
+                camfeteriaVM
             )
         }
 
@@ -136,14 +143,16 @@ fun ScreenControl() {
             BebidasFriasScreen(
                 onMenuClick = { navController.navigate(Screen.Menu.route) },
                 onCartClick = { navController.navigate(Screen.Carrito.route) },
-                onAccountClick = { navController.navigate(Screen.Auth.route) }
+                onAccountClick = { navController.navigate(Screen.Auth.route) },
+                camfeteriaVM
             )
         }
         
         composable(Screen.Carrito.route) {
             CarritoScreen(
                 onMenuClick = { navController.navigate(Screen.Menu.route) },
-                onAccountClick = { navController.navigate(Screen.Auth.route) }
+                onAccountClick = { navController.navigate(Screen.Auth.route) },
+                camfeteriaVM
             )
         }
 
