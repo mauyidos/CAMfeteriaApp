@@ -16,11 +16,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.camfeteriaapp.model.Producto
+import com.example.camfeteriaapp.navigation.Screen
 import com.example.camfeteriaapp.viewmodel.CAMfeteriaViewModel
 
 @Composable
-fun CarritoCard(context: Context, item: Producto, camfeteriaVM: CAMfeteriaViewModel) {
+fun CarritoCard(context: Context, item: Producto, camfeteriaVM: CAMfeteriaViewModel, navController: NavController) {
     var cantidad by remember { mutableStateOf(item.cantidad) }
     var subtotal by remember { mutableStateOf(0.0) }
 
@@ -42,9 +44,12 @@ fun CarritoCard(context: Context, item: Producto, camfeteriaVM: CAMfeteriaViewMo
             ) {
 
                 Button(onClick = {
-                    camfeteriaVM.actualizarCantidad(item, item.cantidad - 1, context)
                     cantidad--
+                    if (cantidad <= 0) {
+                        navController.navigate(Screen.Carrito.route)
+                    }
                     subtotal = cantidad * item.precio
+                    camfeteriaVM.actualizarCantidad(item, item.cantidad - 1, context)
                 }) {
                     Text("-")
                 }
@@ -55,9 +60,9 @@ fun CarritoCard(context: Context, item: Producto, camfeteriaVM: CAMfeteriaViewMo
                 )
 
                 Button(onClick = {
-                    camfeteriaVM.actualizarCantidad(item, item.cantidad + 1, context)
                     cantidad++
                     subtotal = cantidad * item.precio
+                    camfeteriaVM.actualizarCantidad(item, item.cantidad + 1, context)
                 }) {
                     Text("+")
                 }

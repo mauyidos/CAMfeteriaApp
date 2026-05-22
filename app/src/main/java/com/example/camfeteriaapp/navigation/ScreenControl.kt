@@ -1,7 +1,6 @@
 package com.example.camfeteriaapp.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavOptions
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -152,7 +151,8 @@ fun ScreenControl(camfeteriaVM: CAMfeteriaViewModel) {
             CarritoScreen(
                 onMenuClick = { navController.navigate(Screen.Menu.route) },
                 onAccountClick = { navController.navigate(Screen.Auth.route) },
-                camfeteriaVM
+                camfeteriaVM,
+                navController
             )
         }
 

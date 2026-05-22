@@ -33,6 +33,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.camfeteriaapp.ui.components.CarritoCard
 import com.example.camfeteriaapp.viewmodel.CAMfeteriaViewModel
 
@@ -40,7 +41,8 @@ import com.example.camfeteriaapp.viewmodel.CAMfeteriaViewModel
 fun CarritoScreen(
     onMenuClick: () -> Unit,
     onAccountClick: () -> Unit,
-    camfeteriaVM: CAMfeteriaViewModel
+    camfeteriaVM: CAMfeteriaViewModel,
+    navController: NavController
 ) {
     val context = LocalContext.current
     val carrito = camfeteriaVM.items
@@ -103,7 +105,7 @@ fun CarritoScreen(
 
                     val item = carrito[index]
 
-                    CarritoCard(context, item, camfeteriaVM)
+                    CarritoCard(context, item, camfeteriaVM, navController)
                 }
             }
 
