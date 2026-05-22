@@ -33,6 +33,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.camfeteriaapp.ui.components.CarritoCard
 import com.example.camfeteriaapp.viewmodel.CAMfeteriaViewModel
 
 @Composable
@@ -43,11 +44,10 @@ fun CarritoScreen(
 ) {
     val context = LocalContext.current
     val carrito = camfeteriaVM.items
-    var total by remember{mutableStateOf(0.0)}
 
     LaunchedEffect(Unit) {
         camfeteriaVM.cargarCarrito(context)
-        total = camfeteriaVM.getTotal()
+        camfeteriaVM.getTotal()
     }
 
     Scaffold(
@@ -103,45 +103,7 @@ fun CarritoScreen(
 
                     val item = carrito[index]
 
-                    Card(
-                        shape = RoundedCornerShape(16.dp)
-                    ) {
-
-                        Column(
-                            modifier = Modifier.Companion.padding(16.dp)
-                        ) {
-
-                            Text(item.nombre)
-
-                            Text("Precio: $${item.precio}")
-
-                            Row(
-                                verticalAlignment = Alignment.Companion.CenterVertically
-                            ) {
-
-                                Button(onClick = {
-                                    camfeteriaVM.actualizarCantidad(item, item.cantidad - 1, context)
-                                }) {
-                                    Text("-")
-                                }
-
-                                Text(
-                                    "${item.cantidad}",
-                                    modifier = Modifier.Companion.padding(16.dp)
-                                )
-
-                                Button(onClick = {
-                                    camfeteriaVM.actualizarCantidad(item, item.cantidad + 1, context)
-                                }) {
-                                    Text("+")
-                                }
-                            }
-
-                            Text(
-                                "Subtotal: $${item.precio * item.cantidad}"
-                            )
-                        }
-                    }
+                    CarritoCard(context, item, camfeteriaVM)
                 }
             }
 
@@ -152,7 +114,7 @@ fun CarritoScreen(
             }
 
             Text(
-                text = "Total: $${"%.2f".format(total)}",
+                text = "Total: $${"%.2f".format(camfeteriaVM.total)}",
                 fontSize = 22.sp,
                 color = Color(0xFFD9A066)
             )

@@ -16,6 +16,9 @@ class CAMfeteriaViewModel : ViewModel() {
 
     val items = mutableStateListOf<Producto>()
 
+    var total by mutableStateOf(0.0)
+        public set
+
     // 🔥 AGREGAR PRODUCTO
     fun agregarProducto(nombre: String, precio: Double, context: Context) {
 
@@ -39,12 +42,14 @@ class CAMfeteriaViewModel : ViewModel() {
             item.cantidad = nuevaCantidad
         }
 
+        getTotal()
+
         guardarCarrito(context)
     }
 
     // 🔥 TOTAL
-    fun getTotal(): Double {
-        return items.sumOf { it.precio * it.cantidad }
+    fun getTotal() {
+        total = items.sumOf { it.precio * it.cantidad }
     }
 
     // 🔥 GUARDAR
@@ -71,6 +76,7 @@ class CAMfeteriaViewModel : ViewModel() {
     // 🔥 LIMPIAR
     fun limpiarCarrito(context: Context) {
         items.clear()
+        getTotal()
         guardarCarrito(context)
     }
 }
