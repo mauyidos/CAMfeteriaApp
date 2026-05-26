@@ -15,10 +15,12 @@ import com.example.camfeteriaapp.R
 import com.example.camfeteriaapp.model.Producto
 import com.example.camfeteriaapp.ui.components.ProductoCard
 import com.example.camfeteriaapp.viewmodel.CAMfeteriaViewModel
+import androidx.compose.material.icons.filled.Search
 
 @Composable
 fun BebidasFriasScreen(
     onMenuClick: () -> Unit,
+    onSearchClick: () -> Unit,
     onCartClick: () -> Unit,
     onAccountClick: () -> Unit,
     camfeteriaVM: CAMfeteriaViewModel
@@ -49,6 +51,20 @@ fun BebidasFriasScreen(
                     onClick = onMenuClick,
                     icon = { Icon(Icons.Default.RestaurantMenu, contentDescription = "Menú") },
                     label = { Text("Menú") }
+                )
+
+                NavigationBarItem(
+                    selected = false,
+                    onClick = onSearchClick,
+                    icon = {
+                        Icon(
+                            Icons.Default.Search,
+                            contentDescription = "Buscar"
+                        )
+                    },
+                    label = {
+                        Text("Buscar")
+                    }
                 )
 
                 NavigationBarItem(

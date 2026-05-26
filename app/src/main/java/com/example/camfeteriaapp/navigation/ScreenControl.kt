@@ -17,6 +17,7 @@ import com.example.camfeteriaapp.ui.screens.CuentaScreen
 import com.example.camfeteriaapp.ui.screens.RegisterScreen
 import com.example.camfeteriaapp.ui.screens.SplashScreen
 import com.example.camfeteriaapp.viewmodel.CAMfeteriaViewModel
+import com.example.camfeteriaapp.ui.screens.BuscarScreen
 
 @Composable
 fun ScreenControl(camfeteriaVM: CAMfeteriaViewModel) {
@@ -35,6 +36,9 @@ fun ScreenControl(camfeteriaVM: CAMfeteriaViewModel) {
                 },
                 onCartClick = {
                     navController.navigate(Screen.Carrito.route)
+                },
+                onSearchClick = {
+                    navController.navigate(Screen.Buscar.route)
                 },
                 onAccountClick = {
                 }
@@ -64,6 +68,9 @@ fun ScreenControl(camfeteriaVM: CAMfeteriaViewModel) {
                 onMenuClick = {
                     navController.navigate(Screen.Menu.route)
                 },
+                onSearchClick = {
+                    navController.navigate(Screen.Buscar.route)
+                },
                 onCartClick = {
                     navController.navigate(Screen.Carrito.route)
                 },
@@ -77,6 +84,9 @@ fun ScreenControl(camfeteriaVM: CAMfeteriaViewModel) {
         composable(Screen.Menu.route) {
             MenuScreen(
                 onMenuClick = { },
+                onSearchClick = {
+                    navController.navigate(Screen.Buscar.route)
+                },
                 onCartClick = { navController.navigate(Screen.Carrito.route) },
                 onAccountClick = { navController.navigate(Screen.Cuenta.route) {
                     launchSingleTop = true
@@ -124,6 +134,9 @@ fun ScreenControl(camfeteriaVM: CAMfeteriaViewModel) {
         composable("entradas") {
             EntradasScreen(
                 onMenuClick = { navController.navigate(Screen.Menu.route) },
+                onSearchClick = {
+                    navController.navigate(Screen.Buscar.route)
+                },
                 onCartClick = { navController.navigate(Screen.Carrito.route) },
                 onAccountClick = { navController.navigate(Screen.Cuenta.route) },
                 camfeteriaVM
@@ -133,6 +146,9 @@ fun ScreenControl(camfeteriaVM: CAMfeteriaViewModel) {
         composable("comidas") {
             ComidasScreen(
                 onMenuClick = { navController.navigate(Screen.Menu.route) },
+                onSearchClick = {
+                    navController.navigate(Screen.Buscar.route)
+                },
                 onCartClick = { navController.navigate(Screen.Carrito.route) },
                 onAccountClick = { navController.navigate(Screen.Cuenta.route) },
                 camfeteriaVM
@@ -142,6 +158,9 @@ fun ScreenControl(camfeteriaVM: CAMfeteriaViewModel) {
         composable("postres") {
             PostresScreen(
                 onMenuClick = { navController.navigate(Screen.Menu.route) },
+                onSearchClick = {
+                    navController.navigate(Screen.Buscar.route)
+                },
                 onCartClick = { navController.navigate(Screen.Carrito.route) },
                 onAccountClick = { navController.navigate(Screen.Cuenta.route) },
                 camfeteriaVM
@@ -151,6 +170,9 @@ fun ScreenControl(camfeteriaVM: CAMfeteriaViewModel) {
         composable("bebidasCalientes") {
             BebidasCalientesScreen(
                 onMenuClick = { navController.navigate(Screen.Menu.route) },
+                onSearchClick = {
+                    navController.navigate(Screen.Buscar.route)
+                },
                 onCartClick = { navController.navigate(Screen.Carrito.route) },
                 onAccountClick = { navController.navigate(Screen.Cuenta.route) },
                 camfeteriaVM
@@ -160,15 +182,41 @@ fun ScreenControl(camfeteriaVM: CAMfeteriaViewModel) {
         composable("bebidasFrias") {
             BebidasFriasScreen(
                 onMenuClick = { navController.navigate(Screen.Menu.route) },
+                onSearchClick = {
+                    navController.navigate(Screen.Buscar.route)
+                },
                 onCartClick = { navController.navigate(Screen.Carrito.route) },
                 onAccountClick = { navController.navigate(Screen.Cuenta.route) },
                 camfeteriaVM
             )
         }
-        
+
+        composable(Screen.Buscar.route) {
+            BuscarScreen(
+                camfeteriaVM = camfeteriaVM,
+
+                onMenuClick = {
+                    navController.navigate(Screen.Menu.route)
+                },
+
+                onSearchClick = { },
+
+                onCartClick = {
+                    navController.navigate(Screen.Carrito.route)
+                },
+
+                onAccountClick = {
+                    navController.navigate(Screen.Cuenta.route)
+                }
+            )
+        }
+
         composable(Screen.Carrito.route) {
             CarritoScreen(
                 onMenuClick = { navController.navigate(Screen.Menu.route) },
+                onSearchClick = {
+                    navController.navigate(Screen.Buscar.route)
+                },
                 onAccountClick = { navController.navigate(Screen.Cuenta.route) },
                 camfeteriaVM,
                 navController

@@ -35,7 +35,9 @@ fun ProductoCard(producto: Producto, camfeteriaVM: CAMfeteriaViewModel) {
 
     Card(
         shape = RoundedCornerShape(20.dp),
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 6.dp)
     ) {
 
         Column {

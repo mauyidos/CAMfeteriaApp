@@ -18,11 +18,13 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.camfeteriaapp.viewmodel.CAMfeteriaViewModel
+import androidx.compose.material.icons.filled.Search
 
 @Composable
 fun CuentaScreen(
     camfeteriaVM: CAMfeteriaViewModel,
     onMenuClick: () -> Unit,
+    onSearchClick: () -> Unit,
     onCartClick: () -> Unit,
     onAccountClick: () -> Unit
 ) {
@@ -63,6 +65,20 @@ fun CuentaScreen(
                     },
                     label = {
                         Text("Menú")
+                    }
+                )
+
+                NavigationBarItem(
+                    selected = false,
+                    onClick = onSearchClick,
+                    icon = {
+                        Icon(
+                            Icons.Default.Search,
+                            contentDescription = "Buscar"
+                        )
+                    },
+                    label = {
+                        Text("Buscar")
                     }
                 )
 

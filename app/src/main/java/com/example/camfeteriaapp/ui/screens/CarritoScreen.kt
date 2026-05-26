@@ -21,10 +21,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.camfeteriaapp.ui.components.CarritoCard
 import com.example.camfeteriaapp.viewmodel.CAMfeteriaViewModel
+import androidx.compose.material.icons.filled.Search
 
 @Composable
 fun CarritoScreen(
     onMenuClick: () -> Unit,
+    onSearchClick: () -> Unit,
     onAccountClick: () -> Unit,
     camfeteriaVM: CAMfeteriaViewModel,
     navController: NavController
@@ -66,6 +68,20 @@ fun CarritoScreen(
                     },
                     label = {
                         Text("Menú")
+                    }
+                )
+
+                NavigationBarItem(
+                    selected = false,
+                    onClick = onSearchClick,
+                    icon = {
+                        Icon(
+                            Icons.Default.Search,
+                            contentDescription = "Buscar"
+                        )
+                    },
+                    label = {
+                        Text("Buscar")
                     }
                 )
 

@@ -23,10 +23,12 @@ import androidx.compose.ui.platform.LocalContext
 import com.example.camfeteriaapp.model.Producto
 import com.example.camfeteriaapp.ui.components.ProductoCard
 import com.example.camfeteriaapp.viewmodel.CAMfeteriaViewModel
+import androidx.compose.material.icons.filled.Search
 
 @Composable
 fun DesayunosScreen(
     onMenuClick: () -> Unit,
+    onSearchClick: () -> Unit,
     onCartClick: () -> Unit,
     onAccountClick: () -> Unit,
     camfeteriaVM: CAMfeteriaViewModel
@@ -57,6 +59,20 @@ fun DesayunosScreen(
                     onClick = onMenuClick,
                     icon = { Icon(Icons.Default.RestaurantMenu, contentDescription = "Menú") },
                     label = { Text("Menú") }
+                )
+
+                NavigationBarItem(
+                    selected = false,
+                    onClick = onSearchClick,
+                    icon = {
+                        Icon(
+                            Icons.Default.Search,
+                            contentDescription = "Buscar"
+                        )
+                    },
+                    label = {
+                        Text("Buscar")
+                    }
                 )
 
                 NavigationBarItem(

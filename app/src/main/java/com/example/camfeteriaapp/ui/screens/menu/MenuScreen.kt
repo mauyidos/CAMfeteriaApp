@@ -33,10 +33,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.camfeteriaapp.R
+import androidx.compose.material.icons.filled.Search
+
 
 @Composable
 fun MenuScreen(
     onMenuClick: () -> Unit = {},
+    onSearchClick: () -> Unit = {},
     onCartClick: () -> Unit = {},
     onAccountClick: () -> Unit = {},
     onCategoryClick: (String) -> Unit = {}
@@ -58,6 +61,20 @@ fun MenuScreen(
                     onClick = onMenuClick,
                     icon = { Icon(Icons.Default.RestaurantMenu, contentDescription = "Menú") },
                     label = { Text("Menú") }
+                )
+
+                NavigationBarItem(
+                    selected = false,
+                    onClick = onSearchClick,
+                    icon = {
+                        Icon(
+                            Icons.Default.Search,
+                            contentDescription = "Buscar"
+                        )
+                    },
+                    label = {
+                        Text("Buscar")
+                    }
                 )
 
                 NavigationBarItem(
