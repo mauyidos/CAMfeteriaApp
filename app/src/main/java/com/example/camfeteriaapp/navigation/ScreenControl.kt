@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.camfeteriaapp.database.viewModel.UserViewModel
 import com.example.camfeteriaapp.ui.screens.CarritoScreen
 import com.example.camfeteriaapp.ui.screens.menu.MenuScreen
 import com.example.camfeteriaapp.ui.screens.menu.productos.BebidasCalientesScreen
@@ -20,7 +21,7 @@ import com.example.camfeteriaapp.viewmodel.CAMfeteriaViewModel
 import com.example.camfeteriaapp.ui.screens.BuscarScreen
 
 @Composable
-fun ScreenControl(camfeteriaVM: CAMfeteriaViewModel) {
+fun ScreenControl(camfeteriaVM: CAMfeteriaViewModel, userVM: UserViewModel) {
     val navController = rememberNavController()
 
     NavHost(
@@ -56,11 +57,11 @@ fun ScreenControl(camfeteriaVM: CAMfeteriaViewModel) {
         }
 
         composable(Screen.Auth.route) {
-            AuthScreen(navController)
+            AuthScreen(userVM, navController)
         }
 
         composable(Screen.Register.route) {
-            RegisterScreen(navController)
+            RegisterScreen(userVM, navController)
         }
 
         composable("desayunos") {

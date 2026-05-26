@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.camfeteriaapp.database.model.User
 import com.example.camfeteriaapp.database.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import jakarta.inject.Inject
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import kotlin.collections.emptyList
 
 @HiltViewModel
-class DataViewModel @Inject constructor(
+class UserViewModel @Inject constructor(
     private val repository: UserRepository
 ): ViewModel() {
     private val _userList = MutableStateFlow<List<User>>(emptyList())

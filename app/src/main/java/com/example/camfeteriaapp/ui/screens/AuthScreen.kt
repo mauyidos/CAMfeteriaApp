@@ -28,9 +28,10 @@ import androidx.navigation.NavController
 import com.example.camfeteriaapp.R
 import com.example.camfeteriaapp.navigation.Screen
 import com.example.camfeteriaapp.UserPreferences
+import com.example.camfeteriaapp.database.viewModel.UserViewModel
 
 @Composable
-fun AuthScreen(navController: NavController) {
+fun AuthScreen(userVM: UserViewModel, navController: NavController) {
 
     val context = LocalContext.current
     val userPrefs = remember { UserPreferences(context) }

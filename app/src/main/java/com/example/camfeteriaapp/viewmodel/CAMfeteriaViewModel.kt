@@ -3,6 +3,8 @@ package com.example.camfeteriaapp.viewmodel
 import android.content.Context
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import com.example.camfeteriaapp.model.Producto
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -10,7 +12,8 @@ import com.google.gson.reflect.TypeToken
 private const val PREFS_NAME = "carrito_prefs"
 private const val KEY_CART = "carrito"
 
-class CAMfeteriaViewModel : ViewModel() {
+@HiltViewModel
+class CAMfeteriaViewModel @Inject constructor() : ViewModel() {
     var productos by mutableStateOf(listOf<Producto>())
         private set
 

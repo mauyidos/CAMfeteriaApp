@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     id("com.google.devtools.ksp") version "2.3.4"
-    //id("com.google.dagger.hilt.android") version "2.57.1"
+    id("com.google.dagger.hilt.android")
 }
 
 android {
