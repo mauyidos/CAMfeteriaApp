@@ -14,7 +14,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.*
 import androidx.navigation.NavController
-import com.example.camfeteriaapp.UserPreferences
 import com.example.camfeteriaapp.database.model.User
 import com.example.camfeteriaapp.database.viewModel.UserViewModel
 
