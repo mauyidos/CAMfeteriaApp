@@ -16,6 +16,9 @@ interface UserDataBaseDao {
     fun getUser(): Flow<List<User>>
     @Query("SELECT * FROM user WHERE id = :id")
     fun getUserById(id: Long): Flow<User>
+    @Query("SELECT * FROM user WHERE email = :email LIMIT 1")
+    suspend fun getUserByEmail(email: String): User?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(user: User)
 

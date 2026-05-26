@@ -20,8 +20,11 @@ class UserRepository@Inject constructor(private val userDataBaseDao: UserDataBas
         .flowOn(Dispatchers.IO)
         .conflate()
 
-    fun getCronById(id: Long): Flow<User> = userDataBaseDao
+    fun getUserById(id: Long): Flow<User> = userDataBaseDao
         .getUserById(id)
         .flowOn(Dispatchers.IO)
         .conflate()
+
+    suspend fun getUserByEmail(email: String): User? = userDataBaseDao
+        .getUserByEmail(email)
 }

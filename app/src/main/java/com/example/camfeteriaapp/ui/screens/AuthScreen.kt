@@ -1,6 +1,7 @@
 package com.example.camfeteriaapp.ui.screens
 
 import android.widget.Toast
+import kotlinx.coroutines.launch
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
@@ -28,13 +29,14 @@ import androidx.navigation.NavController
 import com.example.camfeteriaapp.R
 import com.example.camfeteriaapp.navigation.Screen
 import com.example.camfeteriaapp.UserPreferences
+import com.example.camfeteriaapp.database.model.User
 import com.example.camfeteriaapp.database.viewModel.UserViewModel
 
 @Composable
 fun AuthScreen(userVM: UserViewModel, navController: NavController) {
 
     val context = LocalContext.current
-    val userPrefs = remember { UserPreferences(context) }
+    val scope = rememberCoroutineScope()
 
     // 🧠 Estados de inputs
     var email by remember { mutableStateOf("") }
@@ -162,14 +164,23 @@ fun AuthScreen(userVM: UserViewModel, navController: NavController) {
             // 🔘 BOTÓN LOGIN
             Button(
                 onClick = {
-                    val savedEmail = userPrefs.getUserEmail()
-                    val savedPassword = userPrefs.getUserPassword()
+                    scope.launch {
+                        try {
+                            val savedUser: User? = userVM.getUser(email)
 
-                    if (email == savedEmail && password == savedPassword) {
-                        Toast.makeText(context, "Login correcto", Toast.LENGTH_SHORT).show()
-                        navController.navigate(Screen.Menu.route)
-                    } else {
-                        Toast.makeText(context, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+                            if (savedUser != null) {
+                                if (password == savedUser.password) {
+                                    Toast.makeText(context, "Login correcto", Toast.LENGTH_SHORT).show()
+                                    navController.navigate(Screen.Menu.route)
+                                } else {
+                                    Toast.makeText(context, "Contraseña incorrecta", Toast.LENGTH_SHORT).show()
+                                }
+                            } else {
+                                Toast.makeText(context, "El usuario no existe", Toast.LENGTH_SHORT).show()
+                            }
+                        } catch (e: Exception) {
+                            Toast.makeText(context, "Error en el sistema", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 },
                 interactionSource = interactionSource,

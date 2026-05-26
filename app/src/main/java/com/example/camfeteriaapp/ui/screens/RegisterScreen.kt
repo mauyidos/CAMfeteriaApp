@@ -15,13 +15,13 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.*
 import androidx.navigation.NavController
 import com.example.camfeteriaapp.UserPreferences
+import com.example.camfeteriaapp.database.model.User
 import com.example.camfeteriaapp.database.viewModel.UserViewModel
 
 @Composable
 fun RegisterScreen(userVM: UserViewModel, navController: NavController) {
 
     val context = LocalContext.current
-    val userPrefs = remember { UserPreferences(context) }
 
     var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -147,7 +147,13 @@ fun RegisterScreen(userVM: UserViewModel, navController: NavController) {
             Button(
                 onClick = {
                     if (password == confirmPassword && password.length >= 8) {
-                        userPrefs.saveUser(name, email, password)
+                        userVM.addUser(
+                            User(
+                                name = name,
+                                email = email,
+                                password = password)
+                        )
+
                         Toast.makeText(context, "Registrado", Toast.LENGTH_SHORT).show()
                         navController.popBackStack()
                     } else {
