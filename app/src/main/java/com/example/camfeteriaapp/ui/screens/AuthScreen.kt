@@ -28,7 +28,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.camfeteriaapp.R
 import com.example.camfeteriaapp.navigation.Screen
-import com.example.camfeteriaapp.UserPreferences
 import com.example.camfeteriaapp.database.model.User
 import com.example.camfeteriaapp.database.viewModel.UserViewModel
 

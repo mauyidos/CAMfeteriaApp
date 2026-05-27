@@ -1,10 +1,8 @@
 package com.example.camfeteriaapp.ui.screens.menu.productos
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.RestaurantMenu
@@ -14,12 +12,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.camfeteriaapp.R
-import androidx.compose.ui.platform.LocalContext
 import com.example.camfeteriaapp.model.Producto
 import com.example.camfeteriaapp.ui.components.ProductoCard
 import com.example.camfeteriaapp.viewmodel.CAMfeteriaViewModel
