@@ -9,6 +9,7 @@
               <option name="preferredColumnWidths">
                 <map>
                   <entry key="Duration" value="90" />
+                  <entry key="HUAWEI JNY-LX1" value="120" />
                   <entry key="HUAWEI MRD-LX3" value="120" />
                   <entry key="Tests" value="360" />
                 </map>
@@ -22,6 +23,7 @@
               <option name="preferredColumnWidths">
                 <map>
                   <entry key="Duration" value="90" />
+                  <entry key="HUAWEI JNY-LX1" value="120" />
                   <entry key="HUAWEI MRD-LX3" value="120" />
                   <entry key="Tests" value="360" />
                 </map>
